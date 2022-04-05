@@ -31,7 +31,6 @@ const getData = async (url) => {
             <div class="card-body">
                 <h4 class="card-text">Nombre: ${name}</h4>
                 <p class="card-text">Precio: $${price}</p>
-                <p class="card-text">${description}</p>
                 <p class="card-text">Tipo: ${type}</p>
                 <p class="card-text">Categoría: ${category}</p>
             </div>
