@@ -29,6 +29,9 @@ button:focus:not(:focus-visible) {
 }
 
 /* main */
+.card{
+    margin: 10px;
+}
 
 .grid-elementos {
     justify-content: center;
