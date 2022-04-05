@@ -13,7 +13,7 @@ btnBottoms.addEventListener("click", () => {
 });
 
 btnProducts.addEventListener("click", () => {
-  getData("https://api-clothing-karvaroz.herokuapp.com/products/");
+  getDataProducts("https://api-clothing-karvaroz.herokuapp.com/products/");
 });
 
 const getData = async (url) => {
@@ -34,6 +34,28 @@ const getData = async (url) => {
                 <p class="card-text">Descripción: ${description}</p>
                 <p class="card-text">Tipo: ${type}</p>
                 <p class="card-text">Categoría: ${category}</p>
+            </div>
+        </div>
+    `;
+  });
+};
+
+const getDataProducts = async (url) => {
+  const response = await fetch(url);
+  const data = await response.json();
+  console.table(data);
+
+  listarCard.innerHTML = "";
+
+  data.forEach((product) => {
+    const { name, reference, image } = product;
+    listarCard.innerHTML += `
+        <div class="card mt-5" style="width: 18rem;">
+            <img class="card-img-top" src="${image}" alt="Card image cap" width="100" height="auto">
+            <div class="card-body">
+                <h4 class="card-text">Nombre: ${name}</h4>
+                <p class="card-text">Referencia: ${reference}</p>
+
             </div>
         </div>
     `;
