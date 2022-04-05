@@ -42,12 +42,12 @@ const getData = async (url) => {
 
 const getDataProducts = async (url) => {
   const response = await fetch(url);
-  const data = await response.json();
+  const dataProducts = await response.json();
   console.table(data);
 
   listarCard.innerHTML = "";
 
-  data.forEach((product) => {
+  dataProducts.forEach((product) => {
     const { name, reference, image } = product;
     listarCard.innerHTML += `
         <div class="card mt-5" style="width: 18rem;">
