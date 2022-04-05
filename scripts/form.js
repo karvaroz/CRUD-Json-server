@@ -1,46 +1,38 @@
-let formulario = document.getElementById("formulario");
-let btnReference = document.getElementById("btnReference");
+let btnGuardar = document.getElementById("btnGuardar");
 let btnEditar = document.getElementById("btnEditar");
 let btnEliminar = document.getElementById("btnEliminar");
+let btnReference = document.getElementById("btnReference");
+let form = document.getElementById("formulario");
 
-document.addEventListener("DOMContentLoaded", async () => {
-  document.getElementById("id").style.display = "none";
-  document.getElementById("label-edit").style.display = "none";
-});
-
-formulario.addEventListener("submit", async (e) => {
+let UrlForm = "https://api-clothing-karvaroz.herokuapp.com/products/";
+// GUARDAR
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
   let name = document.getElementById("name").value;
-  let image = document.getElementById("image").value;
   let reference = document.getElementById("reference").value;
-
-  let resp = await fetch(
-    "https://api-clothing-karvaroz.herokuapp.com/products/",
-    {
-      method: "POST",
-      body: JSON.stringify({
-        name,
-        image,
-        reference
-      }),
-      headers: {
-        "Content-Type": "application/json; charset=UTF-8",
-      },
-    }
-  );
-  let data = resp.json();
-  formulario.reset();
+  let image = document.getElementById("image").value;
+  let response = await fetch(UrlForm, {
+    method: "POST",
+    body: JSON.stringify({
+      name,
+      reference,
+      image,
+    }),
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+    },
+  });
+  let data = await response.json();
+  console.log(data)
+  form.reset()
 });
 
+// BUSCAR
 btnReference.addEventListener("click", async (e) => {
   let referenceValue = document.getElementById("reference").value;
-  let response = await fetch(
-    "https://api-clothing-karvaroz.herokuapp.com/products/"
-  );
+  let response = await fetch(UrlForm);
   let data = await response.json();
-  let referenceSearch = data.find(
-    (product) => product.reference === referenceValue
-  );
+  let referenceSearch = data.find((prod) => prod.reference === referenceValue);
   const { name, reference, image, id } = referenceSearch;
   document.getElementById("name").value = name;
   document.getElementById("reference").value = reference;
@@ -48,39 +40,40 @@ btnReference.addEventListener("click", async (e) => {
   document.getElementById("id").value = id;
 });
 
-btnEditar.addEventListener("click", async () => {
-  let idModificar = document.getElementById("id").value;
+// EDITAR
+btnEditar.addEventListener("click", async (e) => {
   let nameModificar = document.getElementById("name").value;
-  let imageModificar = document.getElementById("image").value;
   let referenceModificar = document.getElementById("reference").value;
+  let imageModificar = document.getElementById("image").value;
+  let idModificar = document.getElementById("id").value;
 
-  let resp = await fetch(
-    `https://api-clothing-karvaroz.herokuapp.com/products/${idModificar}`,
-    {
-      method: "PUT",
-      body: JSON.stringify({
-        id: idModificar,
-        name: nameModificar,
-        image: imageModificar,
-        reference: referenceModificar
-      }),
-      headers: {
-        "Content-Type": "application/json; charset=UTF-8",
-      },
-    }
-  );
-  let data = resp.json();
+  let response = await fetch(UrlForm + idModificar, {
+    method: "PUT",
+    body: JSON.stringify({
+      name: nameModificar,
+      reference: referenceModificar,
+      image: imageModificar,
+      id: idModificar,
+    }),
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+    },
+  });
+  let data = await response.json();
   console.log(data);
+  form.reset()
 });
 
-btnEliminar.addEventListener("click", async () => {
-  let referenceEliminar = document.getElementById("reference").value;
-  let res = await fetch(
-    `https://api-clothing-karvaroz.herokuapp.com/products/${referenceEliminar}`,
-    {
-      method: "DELETE",
-    }
-  );
-  let data = res.json();
+// ELIMINAR
+btnEliminar.addEventListener("click", async (e) => {
+  let idEliminar = document.getElementById("id").value;
+  let response = await fetch(UrlForm + idEliminar, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+    },
+  });
+  let data = await response.json();
   console.log(data);
+  form.reset();
 });
