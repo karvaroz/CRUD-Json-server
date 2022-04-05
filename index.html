@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Nunito" />
+    <link rel="stylesheet" href="styles/home.css">
+    <link rel="stylesheet" href="styles/config.css">
+    <title>CRUD-Json-server</title>
+</head>
+
+<body id="home">
+    <header>
+        <!-- contenedor principal -->
+        <div class="container-fluid">
+            <!-- titulo -->
+            <div class="row">
+                <div class="col mt-5 titulo">
+                    <h1 class="Headline1">CRUD-Json-Server Clothing</h1>
+                </div>
+            </div>
+            <!-- contenedor de categorias -->
+            <div class="row btn-categorias">
+                <!-- titulo de las categoria -->
+                <div class="col mt-3">
+                    <h2 class="subtitle1 div-categorias">Categorías</h2>
+                </div>
+                <!-- categorias -->
+                <div class="row">
+                    <!-- categoria1 -->
+                    <div class="col mx-1">
+                        <button id="btnCategory1" class="btn-categoria-1 btn btn-secondary">
+                            <div class="row">
+                                <div class="col">
+                                    TOPS
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                    <!-- categoria2 -->
+                    <div class="col mx-1">
+                        <button id="btnCategory2" class="btn-categoria-2 btn btn-secondary">
+                            <div class="row">
+                                <div class="col">
+                                    BOTTOMS
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                    <!-- categoria 3 -->
+                    <div class="col mx-1">
+                        <button id="btnCategory2" class="btn-categoria-2 btn btn-secondary">
+                            <div class="row">
+                                <div class="col">
+                                    PRODUCTS
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container-fluid mt-4 mb-3">
+            <div class="row row-cols-2 row-cols-md-2 g-4 grid-elementos">
+
+            </div>
+        </div>
+    </main>
+    <footer>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light menu-elementos">
+            <div class="container-fluid">
+                <a class="nav-link active" aria-current="page" href="index.html" tabindex="-1">Home</a>
+                <a class="nav-link" aria-current="page" href="/pages/form.html" tabindex="-1">Products</a>
+            </div>
+        </nav>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="/scripts/scripts.js"></script>
+</body>
+
+</html>
