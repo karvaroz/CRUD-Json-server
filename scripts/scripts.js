@@ -29,7 +29,7 @@ const getData = async (url) => {
         <div class="card mt-5" style="width: 18rem;">
             <img class="card-img-top" src="${image}" alt="Card image cap" width="100" height="auto">
             <div class="card-body">
-                <h4 class="card-text">Nombre: ${name}</h4>
+                <h4 class="card-text">${name}</h4>
                 <p class="card-text">Precio: $${price}</p>
                 <p class="card-text">Tipo: ${type}</p>
                 <p class="card-text">Categoría: ${category}</p>
